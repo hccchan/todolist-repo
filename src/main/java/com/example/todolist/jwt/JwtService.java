@@ -28,7 +28,7 @@ public class JwtService {
 
     public boolean isTokenValid(String token){
         final String subject = extractSubject(token);
-        return subject.equals(CLIENT_ID_AND_SECRET);
+        return subject.equals(CLIENT_ID_AND_SECRET) && !isTokenExpired(token);
     }
 
     private boolean isTokenExpired(String token){
