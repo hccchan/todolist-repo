@@ -21,6 +21,10 @@
        ```bash
         curl -X PUT 'http://localhost:8080/v1/to-do-list' -H 'Content-Type: application/json' -H 'Authorization: Bearer {jwt token string}' -d '{"id":1,"taskName":"test1","status":2}'
        ```
+       | status | desc |
+       | :-: | :-: |
+       | 1 | new |
+       | 2 | completed |
      - <b>DELETE</b> Delete a TODO item:
        ```bash
         curl -X DELETE 'http://localhost:8080/v1/to-do-list?id=1' -H 'Authorization: Bearer {jwt token string}'
