@@ -1,4 +1,4 @@
-# getting start
+# todolist-repo
 
 - after checkout the `main` branch, navigate to <code>/todolist-repo</code> and run command below for build the docker image from `Dockerfile` and start the container to bring up the application.
    ```bash
