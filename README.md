@@ -3,6 +3,8 @@
 - after checkout the `main` branch, navigate to <code>/todolist-repo</code> and run command below for build the docker image from `Dockerfile` and start the container to bring up the application.
    ```bash
       docker build -t todolist-app .
+   ```
+   ``` bash
       docker run -p 8080:8080 todolist-app
    ```
 - after the container start successfully, go to <code>http://localhost:8080/login</code> to login with `gmail`.
