@@ -19,10 +19,20 @@
          <li><b>GET</b> List all TODO items: </br><code>curl -X GET 'http://localhost:8080/v1/to-do-list' -H 'Authorization: Bearer {jwt token from step 2(i)}'</code></li>
          <li><b>POST</b> Add a TODO item: </br><code>curl -X POST 'http://localhost:8080/v1/to-do-list' -H 'Content-Type: application/json' -H 'Authorization: Bearer {jwt token from step 2.1}' -d '{"taskName":"test1","status":1}'</code></li>
          <li><b>PUT</b> Mark a TODO item as completed: </br><code>curl -X PUT 'http://localhost:8080/v1/to-do-list' -H 'Content-Type: application/json' -H 'Authorization: Bearer {jwt token from step 2.1}' -d '{"id":1,"taskName":"test1","status":2}'</code>
-            <ol>
-               <li>status (1, new)</li>
-               <li>status (2, completed)</li>
-            </ol>
+            <table>
+               <tr>
+                  <th>status</th>
+                  <th>desc</th>
+               </tr>
+               <tr>
+                  <td>1</td>
+                  <td>new</td>
+               </tr>
+               <tr>
+                  <td>2</td>
+                  <td>completed</td>
+               </tr>
+            </table>
          </li>
          <li><b>DELETE</b> Delete a TODO item: </br><code>curl -X DELETE 'http://localhost:8080/v1/to-do-list?id=1' -H 'Authorization: Bearer {jwt token from step 2.1}'</code></li>
       </ol>
