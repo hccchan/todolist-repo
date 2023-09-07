@@ -6,6 +6,8 @@ import com.example.todolist.entity.ToDoList;
 import com.example.todolist.repository.ToDoListRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,9 +24,11 @@ public class ToDoListService {
     private ToDoListDtoMapper toDoListDtoMapper;
 
     public List<ToDoListDto> findAll(){
-       return toDoListRepository.findAll().stream()
-               .map(toDoListDtoMapper::toDoListToToDoListDto)
-               .collect(Collectors.toList());
+        return toDoListRepository.findAll().stream().map(toDoListDtoMapper::toDoListToToDoListDto).collect(Collectors.toList());
+    }
+
+    public Page<ToDoListDto> findAll(Pageable pageable){
+       return toDoListRepository.findAll(pageable).map(toDoListDtoMapper::toDoListToToDoListDto);
     }
 
     public void createToDoList(ToDoListDto toDoListDto){

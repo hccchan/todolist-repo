@@ -4,6 +4,8 @@ import com.example.todolist.dto.ToDoListDto;
 import com.example.todolist.service.ToDoListService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,9 +29,12 @@ public class ToDoListController {
     private ToDoListService toDoListService;
 
     @GetMapping("/to-do-list")
-    public ResponseEntity<List<ToDoListDto>> findAllToDoList(){
+    public ResponseEntity<List<ToDoListDto>> findAllToDoList(@RequestParam(defaultValue = "0") int page,
+                                                             @RequestParam(defaultValue = "10") int size){
         try{
+            //Pageable pageable = PageRequest.of(page, size);
             List<ToDoListDto> toDoListDtos = toDoListService.findAll();
+            //List<ToDoListDto> toDoListDtos = toDoListService.findAll(pageable).getContent();
             return toDoListDtos.isEmpty() ? new ResponseEntity<>(HttpStatus.NOT_FOUND) : new ResponseEntity<>(toDoListDtos, HttpStatus.OK);
         } catch (Exception e) {
             log.error("findAllToDoList exception : {}", e.getMessage());
