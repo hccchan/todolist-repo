@@ -54,6 +54,8 @@ public class SecurityConfig  {
                     .authorizeRequests()
                     .antMatchers( "/","/authenticated").permitAll()
                     .and()
+                    .logout()
+                    .and()
                     .oauth2Login()
                     .successHandler(customOAuth2LoginSuccessHandler);
             return http.build();
